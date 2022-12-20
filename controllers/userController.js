@@ -48,4 +48,17 @@ module.exports = {
       return res.status(404).json(err);
     }
   },
+  // Friends functions
+  async addFriend(req, res) {
+    try {
+    } catch (err) {
+      return res.status(404).json(err);
+    }
+  },
+  async removeFriend(req, res) {
+    try {
+    } catch (err) {
+      return res.status(404).json(err);
+    }
+  }
 };

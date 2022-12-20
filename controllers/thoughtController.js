@@ -55,4 +55,17 @@ module.exports = {
       return res.status(404).json(err);
     }
   },
+  //Reaction functions
+  async createReaction(req, res) {
+    try {
+    } catch (err) {
+      return res.status(404).json(err);
+    }
+  },
+  async deleteReaction(req, res) {
+    try {
+    } catch (err) {
+      return res.status(404).json(err);
+    }
+  },
 };
