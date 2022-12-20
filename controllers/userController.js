@@ -30,7 +30,8 @@ module.exports = {
       const deleteUser = await User.findOneAndRemove({
         _id: req.params.userId,
       });
-      return res.json(deleteUser).status(200);
+      const updatedUsers = await User.find();
+      return res.json(updatedUsers).status(200);
     } catch (err) {
       return res.status(404).json(err);
     }
