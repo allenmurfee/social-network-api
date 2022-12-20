@@ -20,7 +20,14 @@ module.exports = {
   async createThought(req, res) {
     try {
       const createThought = await Thought.create(req.body);
-      return res.json(createThought).status(200);
+      const updateUser = await User.findOneAndUpdate(
+        {
+          _id: req.body.userId,
+        },
+        { $push: { thoughts: _id } },
+        { new: true }
+      );
+      return res.json(updateUser).status(200);
     } catch (err) {
       return res.status(404).json(err);
     }
@@ -43,7 +50,7 @@ module.exports = {
         { $set: req.body },
         { runValidators: true, new: true }
       );
-      return res.json(updateUser).status(200);
+      return res.json(updateThought).status(200);
     } catch (err) {
       return res.status(404).json(err);
     }
