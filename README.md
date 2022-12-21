@@ -14,6 +14,8 @@ After installing the GitHub repository, you will need to run npm start to start 
 
 ![Project screenshot](./assets/screenshot.png)
 
+Additionally, here is a [tutorial video](./assets/recording.mov) to demonstrate how the project works.
+
 
 ## Credits
 

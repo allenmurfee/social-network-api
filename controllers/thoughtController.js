@@ -20,7 +20,7 @@ module.exports = {
   async createThought(req, res) {
     try {
       const createThought = await Thought.create(req.body);
-      console.log(createThought._id)
+      console.log(createThought._id);
       const updateUser = await User.findOneAndUpdate(
         {
           _id: req.body.userId,
@@ -35,12 +35,19 @@ module.exports = {
   },
   async deleteThought(req, res) {
     try {
+      const updatedUser = await User.findOneAndUpdate(
+        { _id: req.body.userId },
+        {
+          $pull: { thoughts: req.params.thoughtId },
+        }
+      );
       const deleteThought = await Thought.findOneAndDelete({
         _id: req.params.thoughtId,
       });
       const updatedThoughts = await Thought.find();
       return res.json(updatedThoughts).status(200);
     } catch (err) {
+      console.log(err);
       return res.status(404).json(err);
     }
   },
