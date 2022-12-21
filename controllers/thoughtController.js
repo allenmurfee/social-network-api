@@ -20,11 +20,12 @@ module.exports = {
   async createThought(req, res) {
     try {
       const createThought = await Thought.create(req.body);
+      console.log(createThought._id)
       const updateUser = await User.findOneAndUpdate(
         {
           _id: req.body.userId,
         },
-        { $push: { thoughts: _id } },
+        { $push: { thoughts: createThought._id } },
         { new: true }
       );
       return res.json(updateUser).status(200);
