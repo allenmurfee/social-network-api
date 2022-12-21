@@ -12,7 +12,7 @@ To install this project, please download the GitHub repository and run npm insta
 
 After installing the GitHub repository, you will need to run npm start to start the server, and then use an application like Insomnia to manipulate the database data, as this is all backend.
 
-![Project screenshot](./assets/screenshot.png)
+![Project screenshot](./assets/screenshot2.png)
 
 Additionally, here is a [tutorial video](./assets/recording.mov) to demonstrate how the project works.
 
