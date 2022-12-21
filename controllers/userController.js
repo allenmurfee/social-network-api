@@ -51,14 +51,27 @@ module.exports = {
   // Friends functions
   async addFriend(req, res) {
     try {
+      const addFriend = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $push: { friends: req.params.friendId } },
+        { runValidators: true, new: true }
+      );
+      return res.json(addFriend).status(200);
     } catch (err) {
       return res.status(404).json(err);
     }
   },
   async removeFriend(req, res) {
     try {
+      //findOneAndRemove removes whole document, need to use findOneAndDelete
+      const removeFriend = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $pull: { friends: req.params.friendId } },
+        { runValidators: true, new: true }
+      );
+      return res.json(removeFriend).status(200);
     } catch (err) {
       return res.status(404).json(err);
     }
-  }
+  },
 };
