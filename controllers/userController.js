@@ -54,10 +54,11 @@ module.exports = {
       const addFriend = await User.findOneAndUpdate(
         { _id: req.params.userId },
         { $push: { friends: req.params.friendId } },
-        { runValidators: true, new: true }
+        { new: true }
       );
       return res.json(addFriend).status(200);
     } catch (err) {
+      console.log(res.status(404).json(err));
       return res.status(404).json(err);
     }
   },
