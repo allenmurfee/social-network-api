@@ -58,12 +58,26 @@ module.exports = {
   //Reaction functions
   async createReaction(req, res) {
     try {
+      const createReaction = await Thought.findOneAndUpdate(
+        { _id: req.params.thoughtId },
+        { reactions: req.body },
+        { new: true }
+      );
+      return res.json(createReaction).status(200);
     } catch (err) {
       return res.status(404).json(err);
     }
   },
   async deleteReaction(req, res) {
     try {
+      const deleteReaction = await Thought.findOneAndUpdate(
+        { _id: req.params.thoughtId },
+        { $pull: { reactions: req.body.reactionsId } },
+        { new: true }
+      );
+      console.log(deleteReaction);
+      const updatedThoughts = await Thought.find();
+      return res.json(updatedThoughts).status(200);
     } catch (err) {
       return res.status(404).json(err);
     }
